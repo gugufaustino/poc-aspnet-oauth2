@@ -35,6 +35,13 @@ namespace MvcAuth
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+
+            services.AddAuthentication().AddGoogle(googleOptions =>
+            {
+                //TODO: usar secret nesse trecho, mas para find de primeiros testes segue assim
+                googleOptions.ClientId = "716224510861-gokh9i2i5750kmc5hooes77hkmvhtu6v.apps.googleusercontent.com";
+                googleOptions.ClientSecret = "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";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
